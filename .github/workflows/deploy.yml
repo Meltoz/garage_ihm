@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      'master'
+
+env:
+  REGISTRY: meltoz
+  IMAGE_NAME: garage_ihm
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to docker
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          username: ${{env.REGISTRY}}
+          password: ${{secrets.PASS_DOCKER}}
+
+      - name: Prepare image
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{env.REGISTRY}}/${{env.IMAGE_NAME}}
+
+      - name: building image and push
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: .
+          push: true
+          tags: ${{env.REGISTRY}}/${{env.IMAGE_NAME}}:latest
