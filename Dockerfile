@@ -1,5 +1,5 @@
 FROM node:latest AS builder
-LABEL authors="maxim"
+LABEL authors="maxime"
 
 WORKDIR /app
 

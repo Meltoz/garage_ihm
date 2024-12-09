@@ -1,41 +1,31 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import type { CarList } from '../../models/car.schema';
+import {createCarService} from "../../ services/car.service";
 
-  import {$fetch} from "ofetch";
-  import type {CarList} from "../../models/car.schema";
-  const config = useRuntimeConfig();
+const config = useRuntimeConfig();
+const carService = createCarService(config);
 
-  const cars = ref<CarList>([])
+const cars = ref<CarList>([]);
 
-  async function getAllUsers() {
-    cars.value = (await $fetch('/users', {
-      baseURL: config.public.apiBaseUrl,
-    })).data;
-  }
+async function getAllCars() {
+  cars.value = await carService.getAllCars();
+}
 
-  async function createCar() {
-    const car = {name:'Coucou toi', fuelType:'Electric'};
-    return await $fetch('/users', {
-      method: 'POST',
-      baseURL: config.public.apiBaseUrl,
-      body: JSON.stringify(car),
-    }).then(async () => {
-      await getAllUsers();
-    })
-  }
+async function createCar() {
+  const car = { name: 'Coucou toi', fuelType: 'Electric' };
+  await carService.createCar(car);
+  await getAllCars();
+}
 
-  async function deleteCar(id: number) {
-    return await $fetch(`/users/${id}`, {
-      method: 'DELETE',
-      baseURL: config.public.apiBaseUrl
-    }).then(async () => {
-      await getAllUsers();
-    })
-  }
+async function deleteCar(id: number) {
+  await carService.deleteCar(id);
+  await getAllCars();
+}
 
-  onMounted(async () => {
-    await getAllUsers();
-  })
-
+onMounted(async () => {
+  await getAllCars();
+});
 </script>
 
 <template>
