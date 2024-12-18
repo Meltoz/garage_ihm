@@ -4,7 +4,7 @@
 
 <template>
   <h1>Je suis sur la page</h1>
-  <NuxtLink to="/maxime" >Maxime</NuxtLink>
+  <NuxtLink to="/annonces" >Les annonces</NuxtLink>
 </template>
 
 <style scoped>

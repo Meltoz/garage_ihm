@@ -2,8 +2,21 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
+    "noImplicitAny": false,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": false,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
     "paths": {
-      "~/models/*": [",./models/*"]
+      "~/models/*": [",./models/*"],
+      "#app": [
+        "./node_modules/nuxt3/dist/app/index"
+      ]
     }
   }
 }

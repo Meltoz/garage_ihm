@@ -1,0 +1,18 @@
+<script setup lang="ts">
+import type {Announcement} from "../models/announcement";
+
+defineProps<{
+  announcement: Announcement,
+}>();
+</script>
+
+<template>
+  <div class="border border-gray-300 rounded-xl h-fit cursor-pointer hover:bg-gray-100 transition duration-200 px-2">
+    <h3 class="text-2xl">{{ announcement.title }}</h3>
+    <img src="/imgs/voiture.jpg" alt="car" class="rounded"/>
+    <section class="flex justify-between items-center">
+      <p class="text-xl">{{ announcement.car.brand }}<span class="text-base"> - {{ announcement.car.model }}</span></p>
+    </section>
+    <p class="text-sm">{{announcement.car.kilometers}} km</p>
+  </div>
+</template>
