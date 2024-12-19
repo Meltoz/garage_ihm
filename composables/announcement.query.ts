@@ -1,5 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/vue-query";
-import {addAnnouncement, allAnnouncement} from "../services/announcement.service";
+import {addAnnouncement, allAnnouncement, getAnnouncementById} from "../services/announcement.service";
 
 export const useAllAnnouncement = (page: number, pageSize: number) => {
     const {data, isLoading, isError, error, refetch} = useQuery({
@@ -17,13 +17,13 @@ export const useAllAnnouncement = (page: number, pageSize: number) => {
 }
 
 export const useAnnouncementById = (id: number) => {
-    const {data: queryData, isLoading, isError, error, refetch} = useQuery({
+    const {data, isLoading, isError, error, refetch} = useQuery({
         queryKey: ['announcement', id],
-        queryFn: () => (id),
+        queryFn: () => getAnnouncementById(id),
     });
 
     return {
-        data: queryData,
+        data,
         isAnnouncementByIdLoading: isLoading,
         isAnnouncementByIdError: isError,
         announcementByIdError: error,

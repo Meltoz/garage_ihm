@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import {z} from "zod";
 import {useAddAnnouncement} from "../../composables/announcement.query";
 import {addAnnouncement} from "../../services/announcement.service";
@@ -18,24 +17,21 @@ const formSchema = z.object({
 });
 
 const router = useRouter();
-
 const {AddAnnouncement} = useAddAnnouncement();
 
-const form = reactive(
-    {
-        title: '',
-      content: '',
-        car: {
-            brand: '',
-            model: '',
-            fuelType: '',
-            gearbox: '',
-            kilometers: 0,
-            price: 0,
-            year: new Date().getFullYear()
-        }
-    }
-);
+const form = reactive({
+  title: '',
+  content: '',
+  car: {
+    brand: '',
+    model: '',
+    fuelType: '',
+    gearbox: '',
+    kilometers: 0,
+    price: 0,
+    year: new Date().getFullYear()
+  }
+});
 
 // Ajouter un état réactif pour les erreurs
 const errors = reactive({
@@ -65,7 +61,7 @@ const handleSubmit = () => {
   // Valider le formulaire
   const valid = formSchema.safeParse(form);
 
-  if(!valid.success) {
+  if (!valid.success) {
     // En cas d'erreur, associer les messages d'erreur aux champs correspondants
     valid.error.errors.forEach((error) => {
       setNestedError(error.path, error.message);
@@ -86,18 +82,18 @@ const setNestedError = (path: (string | number)[], message: string) => {
 </script>
 
 <template>
-<h3 class="text-3xl m-5">Création d'une annonce</h3>
+  <h3 class="text-3xl m-5">Création d'une annonce</h3>
   <form @submit.prevent="handleSubmit" class="w-full max-w-xl mx-auto space-y-5 px-2 sm:px-0">
     <fieldset class="space-y-3">
-        <label for="title" class="block text-sm font-medium text-gray-700">Titre</label>
-        <input v-model="form.title" type="text" class="border border-neutral-500 rounded w-full px-1 py-0.5"/>
-        <p v-if="errors.title" class="rounded bg-red-300 text-white px-5 py-1">{{errors.title}}</p>
+      <label for="title" class="block text-sm font-medium text-gray-700">Titre</label>
+      <input v-model="form.title" type="text" class="border border-neutral-500 rounded w-full px-1 py-0.5"/>
+      <p v-if="errors.title" class="rounded bg-red-300 text-white px-5 py-1">{{ errors.title }}</p>
     </fieldset>
 
     <fieldset class="space-y-3">
-        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-        <textarea v-model="form.content" class="border border-neutral-500 rounded w-full px-1 "/>
-        <p v-if="errors.content" class="rounded bg-red-300 text-white px-5 py-1">{{errors.description}}</p>
+      <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+      <textarea v-model="form.content" class="border border-neutral-500 rounded w-full px-1 "/>
+      <p v-if="errors.content" class="rounded bg-red-300 text-white px-5 py-1">{{ errors.content }}</p>
     </fieldset>
 
     <fieldset>
@@ -116,7 +112,7 @@ const setNestedError = (path: (string | number)[], message: string) => {
 
       <fieldset class="my-4 flex items-center justify-between gap-5">
         <label for="fuelType" class="block text-sm font-medium text-gray-700 shrink-0">Type de carburant</label>
-        <select v-model="form.car.fuelType" class="border border-neutral-500 rounded px-1 py-0.5 basis-full" >
+        <select v-model="form.car.fuelType" class="border border-neutral-500 rounded px-1 py-0.5 basis-full">
           <option value="" disabled selected>Selectionner un type</option>
           <option value="Petrol">Essence</option>
           <option value="Diesel">Diesel</option>
@@ -126,7 +122,7 @@ const setNestedError = (path: (string | number)[], message: string) => {
 
       <fieldset class="my-4 flex items-center justify-between gap-5">
         <label for="gearbox" class="block text-sm font-medium text-gray-700 shrink-0">Type de boite</label>
-        <select v-model="form.car.gearbox" class="border border-neutral-500 rounded px-1 py-0.5 basis-full" >
+        <select v-model="form.car.gearbox" class="border border-neutral-500 rounded px-1 py-0.5 basis-full">
           <option value="" disabled selected>Sélectionner un type</option>
           <option value="Automatic">Automatic</option>
           <option value="Manual">Manuel</option>
@@ -135,7 +131,8 @@ const setNestedError = (path: (string | number)[], message: string) => {
 
       <fieldset class="my-4">
         <label for="kilometers" class="block text-sm font-medium text-gray-700">Kilomètres</label>
-        <input v-model="form.car.kilometers" type="number" class="border border-neutral-500 rounded w-full px-1 py-0.5"/>
+        <input v-model="form.car.kilometers" type="number"
+               class="border border-neutral-500 rounded w-full px-1 py-0.5"/>
       </fieldset>
 
       <fieldset class="my-4">
@@ -145,7 +142,8 @@ const setNestedError = (path: (string | number)[], message: string) => {
 
       <fieldset class="my-4">
         <label for="year" class="block text-sm font-medium text-gray-700">Année</label>
-        <input id="year" v-model="form.car.year" type="number" class="border border-neutral-500 rounded w-full px-1 py-0.5"/>
+        <input id="year" v-model="form.car.year" type="number"
+               class="border border-neutral-500 rounded w-full px-1 py-0.5"/>
       </fieldset>
     </fieldset>
 
