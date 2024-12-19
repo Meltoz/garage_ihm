@@ -19,14 +19,16 @@ const announcements = computed(() => data.value?.data);
       <p>Chargement en cours ....</p>
     </div>
   </div>
+
   <div v-else-if="isAllAnnouncementError">
     <div class="flex justify-center items-center h-screen">
       <p>Une erreur est survenue</p>
     </div>
   </div>
-  <div v-else class="flex flex-col sm:flex-row justify-between content-center items-center mx-5">
+
+  <div v-else class="flex flex-col sm:flex-row justify-between content-center items-center mx-5 mb-5">
     <div>
-      <h1 class="text-5xl py-10">Listes des annonces</h1>
+      <h1 class="text-4xl md:text-5xl py-10">Listes des annonces</h1>
       <p class="py-3">Découvrez nos annonces exclusives pour la vente de voitures et trouvez la voiture de vos rêves dès
         maintenant !</p>
     </div>
@@ -40,5 +42,4 @@ const announcements = computed(() => data.value?.data);
       </div>
     </div>
   </div>
-
 </template>

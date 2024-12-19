@@ -14,11 +14,7 @@ const announcement = computed(() => data.value);
   <div v-if="isAnnouncementByIdLoading">Chargement...</div>
   <div v-else>
     <h1 class="text-3xl">{{ announcement.title}}</h1>
-    <pre>{{id}}</pre>
+    <img src="/imgs/voiture.jpg" alt="car"  class="rounded h-[400px]"/>
     <pre>{{announcement}}</pre>
   </div>
 </template>
-
-<style scoped>
-
-</style>

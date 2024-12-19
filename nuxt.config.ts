@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.API_BASE_URL || 'https://api-garage.maximemarin.com'
+      apiBaseUrl: process.env.API_BASE_URL || 'https://garage.maximemarin.com'
     }
   },
   compatibilityDate: '2024-11-01',

@@ -18,7 +18,7 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.output ./.output
 
 # Installer uniquement les dépendances de production
-RUN npm install --production
+RUN npm ci --production
 
 # Exposer le port sur lequel l'application écoute (par défaut 3000 pour Nuxt)
 EXPOSE 3000
