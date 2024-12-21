@@ -1,5 +1,11 @@
 <script setup lang="ts">
-
+useHead({
+  title: 'Accueil',
+  meta: [{
+    name: 'description',
+    content: 'Bienvenue sur la page d\'accueil'
+  }]
+})
 </script>
 
 <template>

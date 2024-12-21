@@ -3,13 +3,20 @@ import {z} from "zod";
 import {useAddAnnouncement} from "../../composables/announcement.query";
 import {addAnnouncement} from "../../services/announcement.service";
 import {useRouter} from "nuxt/app";
-
+useHead({
+  title: 'Création d\'une annonce',
+  meta: [{
+    name: 'description',
+    content: 'Créez une annonce pour vendre votre voiture'
+  }]
+});
 const formSchema = z.object({
   title: z.string().min(5, 'Le titre doit faire plus de 5 caractères').max(50, 'Le titre doit faire moins de 50 caractères'),
   content: z.string().min(10, 'La description doit faire plus de 10 caractères').max(500, 'La description doit faire moins de 500 caractères'),
   car: z.object({
     brand: z.string().min(2, 'La marque doit faire plus de 2 caractères').max(50, 'La marque doit faire moins de 50 caractères'),
     model: z.string(),
+    door: z.number().min(0).max(7, 'Le nombre de portes doit être inférieur à 5'),
     kilometers: z.number().min(0, 'Le nombre de kilomètres doit être positif'),
     price: z.number().min(0, 'Le prix doit être positif'),
     year: z.number().min(1900, 'L\'année doit être supérieure à 1900').max(new Date().getFullYear(), 'L\'année doit être inférieure à l\'année actuelle')
@@ -19,19 +26,7 @@ const formSchema = z.object({
 const router = useRouter();
 const {AddAnnouncement} = useAddAnnouncement();
 
-const form = reactive({
-  title: '',
-  content: '',
-  car: {
-    brand: '',
-    model: '',
-    fuelType: '',
-    gearbox: '',
-    kilometers: 0,
-    price: 0,
-    year: new Date().getFullYear()
-  }
-});
+const form = reactive(formSchema.shape);
 
 // Ajouter un état réactif pour les erreurs
 const errors = reactive({
@@ -40,6 +35,7 @@ const errors = reactive({
   car: {
     brand: null,
     model: null,
+    door:null,
     kilometers: null,
     price: null,
     year: null,

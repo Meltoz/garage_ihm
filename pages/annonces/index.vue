@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import {useAllAnnouncement} from "../../composables/announcement.query";
 import {computed} from "vue";
+useHead({
+  title: 'Nos annonces',
+  meta: [{
+    name: 'description',
+    content: 'Découvrez nos annonces exclusives pour la vente de voitures et trouvez la voiture de vos rêves dès maintenant !'
+  }]
+});
 
 const router = useRouter();
 
