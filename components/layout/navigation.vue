@@ -3,24 +3,34 @@ import { ref } from 'vue';
 import { Menu } from 'lucide-vue-next';
 
 const isOpen = ref(false);
+
+const navs = [{
+  href: '/annonces',
+  label: 'Annonces',
+},{
+  href: '/contact',
+  label: 'Nous contacter'
+}];
 </script>
 
 <template>
   <nav class="bg-gray-800">
-    <div class="container mx-auto flex justify-between items-center py-4 px-5">
+    <div class="container mx-auto flex justify-between items-center py-4 px-5 text-white">
       <div>
-        <NuxtLink to="/" class="text-white text-2xl font-bold">CarMarket</NuxtLink>
+        <NuxtLink to="/" class="text-2xl font-bold">CarMarket</NuxtLink>
       </div>
-      <div class="hidden md:flex justify-evenly w-2/12">
-        <NuxtLink to="/annonces" class="text-white">Annonces</NuxtLink>
-      </div>
+      <ul class="hidden md:flex justify-evenly w-5/12">
+        <li v-for="nav in navs" :key="nav.label">
+          <NuxtLink  :to="nav.href">{{nav.label}}</NuxtLink>
+        </li>
+      </ul>
 
       <div class="md:hidden" @click="isOpen = !isOpen" >
         <Menu color="white" :size="36"/>
       </div>
     </div>
-    <div v-if="isOpen" class="md:hidden">
-      <NuxtLink to="/annonces" class="block text-white py-2 px-6">Annonces</NuxtLink>
+    <div v-if="isOpen" class="md:hidden text-white">
+      <NuxtLink v-for="nav in navs" :key="nav.label" :to="nav.href" class="block px-6 py-2">{{nav.label}}</NuxtLink>
     </div>
   </nav>
 </template>

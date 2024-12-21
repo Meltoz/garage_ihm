@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Footer from "../components/layout/footer.vue";
+import Services from "../components/services.vue";
+
 useHead({
   title: 'Accueil',
   meta: [{
@@ -10,7 +13,9 @@ useHead({
 
 <template>
   <h1>Je suis sur la page</h1>
-  <NuxtLink to="/annonces" >Les annonces</NuxtLink>
+  <Services />
+  <Contact />
+  <Footer />
 </template>
 
 <style scoped>
