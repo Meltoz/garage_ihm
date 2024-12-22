@@ -26,7 +26,18 @@ const formSchema = z.object({
 const router = useRouter();
 const {AddAnnouncement} = useAddAnnouncement();
 
-const form = reactive(formSchema.shape);
+const form = reactive({
+  title: '',
+  content: '',
+  car: {
+    brand: '',
+    model: '',
+    door: 3,
+    kilometers: 0,
+    price: 0,
+    year: new Date().getFullYear()
+  }
+});
 
 // Ajouter un état réactif pour les erreurs
 const errors = reactive({

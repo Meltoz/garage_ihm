@@ -7,9 +7,11 @@ defineProps<{
 </script>
 
 <template>
-  <div class="border border-gray-300 rounded-xl h-fit cursor-pointer hover:bg-gray-100 transition duration-200 px-2">
+  <div class="border border-gray-300 rounded-xl h-fit cursor-pointer hover:bg-gray-100 transition duration-200 px-2 group">
     <h3 class="text-2xl">{{ announcement.title }}</h3>
-    <img src="/imgs/voiture.jpg" alt="car" class="rounded"/>
+    <div class="relative overflow-hidden rounded">
+      <img src="/imgs/voiture.jpg" alt="car" class="group-hover:scale-110 transition-all duration-200 w-full"/>
+    </div>
     <section class="flex justify-between items-center">
       <p class="text-xl">{{ announcement.car.brand }}<span class="text-base"> - {{ announcement.car.model }}</span></p>
     </section>

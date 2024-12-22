@@ -9,9 +9,15 @@
     </div>
     <Parallax image="/imgs/garage.avif" class="h-96 rounded"></Parallax>
   </div>
-  <div class="h-[100vh]"></div>
-
+  <h4 class="text-2xl">Formulaire de contact</h4>
+  <ContactForm />
 </template>
 <script setup lang="ts">
 import Parallax from "../../components/layout/parallax.vue";
+
+
+function save(){
+
+}
+
 </script>
