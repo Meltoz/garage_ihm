@@ -15,7 +15,6 @@ useHead({
   <h1>Je suis sur la page</h1>
   <Services />
   <Contact />
-  <Footer />
 </template>
 
 <style scoped>

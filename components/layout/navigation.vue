@@ -10,16 +10,19 @@ const navs = [{
 },{
   href: '/contact',
   label: 'Nous contacter'
+},{
+  href: '/services',
+  label: 'Services'
 }];
 </script>
 
 <template>
   <nav class="bg-gray-800">
-    <div class="container mx-auto flex justify-between items-center py-4 px-5 text-white">
+    <div class="container mx-auto flex justify-between items-center py-4 px-3 text-white">
       <div>
         <NuxtLink to="/" class="text-2xl font-bold">CarMarket</NuxtLink>
       </div>
-      <ul class="hidden md:flex justify-evenly w-5/12">
+      <ul class="hidden md:flex justify-around w-4/12">
         <li v-for="nav in navs" :key="nav.label">
           <NuxtLink  :to="nav.href">{{nav.label}}</NuxtLink>
         </li>
