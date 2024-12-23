@@ -7,17 +7,18 @@
         </p>
       <p class="mt-6">Chez CarMarket, toute notre équipe est à votre service !</p>
     </div>
-    <Parallax image="/imgs/garage.avif" class="h-96 rounded"></Parallax>
+    <Parallax image="/imgs/garage.avif" class="h-[22rem] rounded"></Parallax>
   </div>
-  <h4 class="text-2xl">Formulaire de contact</h4>
-  <ContactForm />
+  <h4 class="text-4xl mx-10 my-6">Formulaire de contact</h4>
+  <ContactForm @contactData="contactHandle" class="shadow sm:w-1/2 w-full mx-auto"/>
 </template>
+
 <script setup lang="ts">
 import Parallax from "../../components/layout/parallax.vue";
+import type {ContactData} from "../../utils/validators/contact.validator";
 
-
-function save(){
-
+const contactHandle = (contactData: ContactData) => {
+  console.log("contact Handle");
+  console.log(contactData);
 }
-
 </script>
