@@ -39,7 +39,7 @@ const announcements = computed(() => data.value?.data);
       <p class="py-3">Découvrez nos annonces exclusives pour la vente de voitures et trouvez la voiture de vos rêves dès
         maintenant !</p>
     </div>
-    <NuxtLink to="/annonces/edit" class="border font-bold text-white bg-blue-400 border-gray-200 hover:bg-blue-500 transition-all duration-200 h-fit rounded px-8 py-4">Créer</NuxtLink>
+    <NuxtLink to="/annonces/edit" class="border font-bold text-white bg-gray-800 hover:bg-gray-600 transition-all duration-200 h-fit rounded px-8 py-4">Créer</NuxtLink>
   </div>
 
   <div class="md:px-10 mx-1">

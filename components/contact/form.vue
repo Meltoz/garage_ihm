@@ -62,7 +62,7 @@ const onSubmit = () => {
       <fieldset class="flex lg:justify-end w-full">
         <button type="submit"
                 :disabled="!validateForm()"
-                class="bg-blue-400 lg:w-fit w-full px-4 py-2 text-white font-semibold rounded hover:bg-blue-300 disabled:cursor-not-allowed disabled:bg-gray-400">
+                class="lg:w-fit w-full px-4 py-2 text-white font-semibold rounded bg-gray-800 hover:bg-gray-600 disabled:cursor-not-allowed disabled:bg-gray-400">
           Envoyer
         </button>
       </fieldset>

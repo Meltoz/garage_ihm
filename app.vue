@@ -2,7 +2,7 @@
   <div>
     <Navigation />
     <NuxtPage />
-    <Footer class="mt-24"/>
+    <Footer/>
   </div>
 </template>
 <script setup lang="ts">
