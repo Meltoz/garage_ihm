@@ -7,7 +7,7 @@
         </p>
       <p class="mt-6">Chez CarMarket, toute notre équipe est à votre service !</p>
     </div>
-    <Parallax image="/imgs/garage.avif" class="h-[500px] rounded"></Parallax>
+    <Parallax image="/imgs/garage.avif" class="max-h-[450px] rounded"></Parallax>
   </div>
   <h4 class="text-4xl mx-10 my-6">Formulaire de contact</h4>
   <ContactForm @contactData="contactHandle" class="shadow sm:w-1/2 w-full mx-auto mb-24" />
@@ -16,8 +16,9 @@
 <script setup lang="ts">
 import Parallax from "../../components/layout/parallax.vue";
 import type {ContactData} from "../../utils/validators/contact.validator";
-
+import {useToast} from "vue-toastification";
+const toast = useToast();
 const contactHandle = (contactData: ContactData) => {
-
+  toast('La demande a été envoyé');
 }
 </script>
