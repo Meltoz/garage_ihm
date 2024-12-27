@@ -3,6 +3,7 @@ import {z} from "zod";
 import {useAddAnnouncement} from "../../composables/announcement.query";
 import {addAnnouncement} from "../../services/announcement.service";
 import {useRouter} from "nuxt/app";
+import {useToast} from "vue-toastification";
 useHead({
   title: 'Création d\'une annonce',
   meta: [{
@@ -23,6 +24,7 @@ const formSchema = z.object({
   })
 });
 
+const toast = useToast();
 const router = useRouter();
 const {AddAnnouncement} = useAddAnnouncement();
 
@@ -76,6 +78,7 @@ const handleSubmit = () => {
     return;
   }
   addAnnouncement(form);
+  toast.success("L'annonce a été publié")
   router.push('/annonces');
 }
 

@@ -18,6 +18,8 @@ import Parallax from "../../components/layout/parallax.vue";
 import type {ContactData} from "../../utils/validators/contact.validator";
 import {useToast} from "vue-toastification";
 const toast = useToast();
+
+
 const contactHandle = (contactData: ContactData) => {
   toast('La demande a été envoyé');
 }

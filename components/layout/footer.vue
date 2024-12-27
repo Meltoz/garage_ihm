@@ -3,7 +3,7 @@ const year = new Date().getFullYear()
 </script>
 
 <template>
-  <div class="w-full bg-gray-800 text-white text-sm">
+  <div class="w-full bg-gray-800 text-white text-sm border-t border-neutral-900">
     <div class="container mx-auto">
       <div class="grid grid-cols-3 justify-center pt-7">
         <div>

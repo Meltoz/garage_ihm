@@ -42,7 +42,7 @@ const announcements = computed(() => data.value?.data);
     <NuxtLink to="/annonces/edit" class="border font-bold text-white bg-gray-800 hover:bg-gray-600 transition-all duration-200 h-fit rounded px-8 py-4">Créer</NuxtLink>
   </div>
 
-  <div class="md:px-10 mx-1">
+  <div class="md:px-10 mx-1 mb-10">
     <div class="grid xl:grid-cols-5 sm:grid-cols-2 md:grid-cols-3 gap-5 grid-cols-1">
       <div v-for="annonce in announcements" :key="annonce.id" @click="router.push(`/annonces/${annonce.id}`)">
         <announcement-card :announcement="annonce" />
